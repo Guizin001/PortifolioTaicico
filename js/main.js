@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   const typewriterElement = document.getElementById('typewriter');
-  const words = ['Web Desenvolvedor', 'Frontend Developer']; // Texto para reescrever
+  const words = ['Web Desenvolvedor', 'Front-End Developer']; // Texto para reescrever
   let wordIndex = 0;
   let letterIndex = 0;
   let currentWord = '';
@@ -180,4 +180,12 @@ function toggleLanguage() {
 
 console.log("EmailJS User ID inicializado");
 emailjs.init('mtgA2rdr4LoVNguMh');
+
+
+
+// Função para alternar a visibilidade do menu
+function toggleMenu() {
+  const navList = document.querySelector('.nav-list'); // Seleciona a lista de navegação
+  navList.classList.toggle('active'); // Alterna a classe 'active' no menu
+}
 
