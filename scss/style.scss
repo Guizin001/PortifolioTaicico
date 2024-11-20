@@ -1,0 +1,670 @@
+// Variáveis de cores
+$primary-color: #986dff;  // Novo roxo
+$secondary-color: #ffffff; // Branco
+$background-color: #121212; // Preto
+$icon-color: #888; // Cor dos ícones
+
+// Variáveis de fontes
+$font-body: 'Roboto', sans-serif;
+$font-title: 'Poppins', sans-serif;
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $background-color;
+  color: $secondary-color;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: $font-title;
+  font-weight: 600;
+  color: $primary-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Header
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, rgba($primary-color, 0.9), rgba($background-color, 0.9)); // Gradiente roxo -> preto com menos opacidade
+  color: $secondary-color;
+  z-index: 10;
+  transition: background 0.3s ease, opacity 0.3s ease;
+
+  // Menu
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $secondary-color;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+
+      li a {
+        color: $secondary-color;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 10px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-color; // Cor roxa no hover
+        }
+      }
+
+      li a.active {
+        color: $primary-color; // Cor ativa para a seção atual
+        font-weight: bold; // Para destacar o item
+      }
+    }
+
+    // Botão de tradução
+    #translateBtn {
+      padding: 5px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 20px;
+        height: 15px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+// Estilo para o logo "Guilherme Taicico"
+.logo-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+// Responsividade para telas menores
+@media (max-width: 768px) {
+
+  #header nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: none;  // Menu inicialmente escondido
+    gap: 1rem;      // Espaçamento entre os itens
+    width: 100%;    // O menu ocupará toda a largura
+    background: linear-gradient(135deg, #996dff73, #121212); /* Degradê roxo e preto */
+    padding: 1rem;
+    flex-direction:column;
+    position: absolute;
+    top: 110px;  // Distância da parte superior
+    right: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;  // Garante que o menu fique sobre o conteúdo
+    opacity: 0;   // Inicialmente o menu está invisível
+    transition: opacity 0.3s ease; // Adiciona animação de transição
+  }
+
+  .nav-list.active {
+    display: flex;   // Menu é exibido quando a classe 'active' é adicionada
+    opacity: 1;      // Agora ele será visível com a transição de opacidade
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;  // Garante que o botão de hambúrguer fique sobre o menu
+
+    div {
+      width: 30px;
+      height: 3px;
+      background-color: white; // Cor visível para o hambúrguer
+      transition: all 0.3s ease; // Para suavizar animações no ícone
+    }
+  }
+
+  .logo-container {
+    margin-bottom: 1rem;
+  }
+}
+
+
+// Estilos para a seção de apresentação
+.home-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+  color: $secondary-color;
+  padding: 2rem;
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .home-text {
+    max-width: 500px;
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+
+      span {
+        color: $secondary-color;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+
+      span {
+        color: $primary-color;
+      }
+    }
+
+    #typewriter {
+      border-right: 3px solid #986dff; /* Cursor de digitação */
+      padding-right: 5px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #986dff; /* Cor roxa */
+    }
+    
+    /* Adicionando o efeito de piscar no cursor */
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+    
+    #typewriter {
+      animation: blink 0.75s step-end infinite;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 1rem;  // Espaçamento entre os ícones
+
+      .social-icon {
+        background-color: $primary-color;
+        color: $secondary-color;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+          background-color: lighten($primary-color, 10%);
+        }
+
+        i {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+
+  .home-image {
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* Estilos gerais da seção Sobre */
+#sobre {
+  background-color: #121212; /* Fundo escuro */
+  background-image: url("https://i.pinimg.com/736x/c8/6a/b3/c86ab320eb7dd9bb4c052463d3642166.jpg");
+  background-size: cover; /* Cobrir toda a seção */
+  background-position: center;
+  padding: 5rem 2rem;
+  color: #ffffff;
+  position: relative; /* Para o pseudo-elemento overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinha conteúdo no topo */
+}
+
+/* Estilos gerais da seção Sobre */
+#sobre {
+  background-color: #121212; /* Fundo escuro */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://i.pinimg.com/736x/c8/6a/b3/c86ab320eb7dd9bb4c052463d3642166.jpg"); /* Fundo com degradê preto */
+  background-size: cover; /* Cobrir toda a seção */
+  background-position: center;
+  padding: 5rem 2rem;
+  color: #ffffff;
+  position: relative; /* Para o pseudo-elemento overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinha conteúdo no topo */
+}
+
+/* Overlay para o fundo */
+#sobre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.36); /* Overlay preto */
+  z-index: -1; /* Fica atrás do conteúdo */
+}
+
+/* Container para a foto e o texto sobre mim */
+.sobre-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinha para a esquerda */
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Foto */
+.sobre-foto {
+  flex: 1;
+  img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Texto sobre mim */
+.sobre-texto {
+  flex: 2;
+  background: linear-gradient(135deg, #996dff41, #121212); /* Degradê roxo e preto */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #e1e1e1;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Cards (Experiências e Habilidades) */
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem; /* Espaço entre os cards e o conteúdo sobre mim */
+}
+
+/* Card */
+.card {
+  background: linear-gradient(135deg, #996dff41, #121212); /* Degradê roxo e preto */
+  color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: 320px; /* Largura mínima de 320px */
+  max-width: 480px; /* Largura máxima para não ficar muito largo */
+  text-align: center;
+  margin-top: 2rem;
+  height: 100%; /* Deixa o card ocupar toda a altura disponível */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h2 {
+    color: white;
+  }
+
+  p {
+    color: #e1e1e1;;
+  }
+}
+
+/* Estilo para o Accordion */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.accordion-header {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.accordion-content {
+  display: none;
+  margin-top: 1rem;
+  color: #ddd;
+}
+
+.accordion-content.active {
+  display: block;
+}
+
+/* Lista de habilidades */
+.habilidades-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.habilidade {
+  text-align: center;
+  color: white; /* Nomes das habilidades em branco */
+}
+
+.habilidade img {
+  width: 50px;
+  height: 50px;
+  filter: brightness(0) invert(1); /* Torna os ícones brancos */
+  margin-bottom: 0.5rem;
+}
+
+.habilidade p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sobre-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sobre-foto {
+    margin-bottom: 2rem;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+// Seções principais
+.section {
+  padding: 5rem 2rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+/* Seção de Projetos */
+.projects {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.project {
+  background: linear-gradient(135deg, #996dff41, #121212); /* Degradê roxo e preto */
+  padding: 2rem; /* Aumentado o padding interno para maior tamanho */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 350px; /* Aumentado a largura do card */
+  height: 500px; /* Definido uma altura fixa para os cards */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Adiciona para posicionamento dos ícones */
+}
+
+.project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.project h3 {
+  font-size: 1.8rem; /* Aumentado o tamanho da fonte do título */
+  margin-bottom: 1rem; /* Aumentado o espaço abaixo do título */
+}
+
+.project p {
+  font-size: 1.2rem; /* Aumentado o tamanho da fonte do parágrafo */
+  color: #666;
+  margin-bottom: 2rem; /* Adicionado espaçamento entre parágrafos e links */
+}
+
+.project-links {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1.5rem; /* Aumentado o espaçamento entre os links */
+  margin-top: 1rem;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem; /* Aumentado o padding nos links */
+  font-size: 1.3rem; /* Aumentado o tamanho da fonte */
+  color: #fff;
+  background-color: rgba(152, 109, 255, 0.8); /* Gradiente roxo */
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.project-links a:hover {
+  background-color: rgba(152, 109, 255, 1); /* Cor roxa mais intensa no hover */
+  transform: translateY(-3px);
+}
+
+.project-links a i {
+  margin-right: 0.5rem;
+}
+
+/* Ícones de View e GitHub */
+.view-link i,
+.github-link i {
+  font-size: 1.6rem; /* Aumentado o tamanho do ícone */
+}
+
+.view-link:hover i,
+.github-link:hover i {
+  color: #000000; /* Cor dos ícones no hover */
+}
+
+// Estilo para a seção de contato
+#contato {
+  padding: 5rem 2rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #996dff41, #121212); /* Degradê roxo e preto */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 1rem;
+        color: #333;
+
+        // Estilo para o placeholder
+        &::placeholder {
+          color: #888;
+          font-style: italic;
+        }
+
+        &:focus {
+          border-color: $primary-color;
+          outline: none;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        height: 150px;
+      }
+    }
+
+    .btn-submit {
+      padding: 1rem 2rem;
+      background-color: $primary-color;
+      color: $secondary-color;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: lighten($primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Estilo para a mensagem de feedback
+.form-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.1rem;
+
+  &.success {
+    background-color: #4caf4f61;
+    color: #fff;
+  }
+
+  &.error {
+    background-color: #ff000085;
+    color: #fff;
+  }
+}
+
+// Rodapé
+footer {
+  background: linear-gradient(90deg, rgba($primary-color, 0.9), rgba($background-color, 0.9)); // Gradiente roxo -> preto com menos opacidade
+  color: $secondary-color;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 5rem;
+  font-size: 1rem;
+}
