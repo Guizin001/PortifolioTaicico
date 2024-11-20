@@ -103,6 +103,7 @@ a {
     width: 100%;
     background: linear-gradient(135deg, rgba(153, 109, 255, 0.4509803922), #121212); /* Degradê roxo e preto */
     padding: 1rem;
+    flex-direction: column;
     position: absolute;
     top: 110px;
     right: 0;
