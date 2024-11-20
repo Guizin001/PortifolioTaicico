@@ -20,33 +20,40 @@
   <link rel="stylesheet" href="scss/style.css">
 </head>
 <body>
-    <header id="header">
-        <nav>
-          <!-- Logo e Nome -->
-          <div class="logo-container">
-            <span class="logo-name">Guilherme Taicico</span>
-          </div>
-          
-          <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-          </div>
-          
-          <!-- Menu de navegação -->
-          <ul class="nav-list">
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ul>
-      
-          <!-- Botão de tradução -->
-          <button id="translateBtn" onclick="toggleLanguage()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" id="languageFlag" width="20px" height="15px">
-          </button>
-        </nav>
-      </header>
+  <header id="header">
+    <nav>
+      <div class="logo-container">
+        <span class="logo-name">Guilherme Taicico</span>
+      </div>
+  
+      <!-- Ícone do menu hambúrguer (apenas visível em dispositivos móveis) -->
+      <div class="mobile-menu" onclick="toggleMenu()"> 
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+  
+      <!-- Menu de navegação -->
+      <ul class="nav-list">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+  
+      <!-- Botão de tradução -->
+      <button id="translateBtn" onclick="toggleLanguage()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" id="languageFlag" width="20px" height="15px">
+      </button>
+    </nav>
+  </header>
+
+  <script>
+    // Função para alternar o idioma (ainda a ser implementada)
+    function toggleLanguage() {
+      alert("Trocar o idioma (ainda a ser implementado)");
+    }
+  </script>
       
 
   <main>
