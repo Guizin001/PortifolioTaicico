@@ -1,4 +1,4 @@
-## Preview (https://taicicoportfolio.netlify.app/)
+## Preview (https://guitaicicodev.netlify.app/)
 
 ## Olá, meu nome é Guilherme Taicico!
 
